@@ -226,6 +226,43 @@ namespace GeometricFigure
         }
     }
 
+    class CompoundFigures:List<IFigure>,IFigure
+    {
+
+         public CompoundFigures(IEnumerable<IFigure> collection):base(collection)
+            {            
+            }
+
+         public double GetArea()
+        {
+            double Sum=0;
+             foreach (var figure in this)
+            {
+              Sum+=figure.GetArea();
+            }
+             return Sum;
+
+        }
+        public double GetPerimetr()
+        {
+
+              double P=0;
+             foreach (var figure in this)
+            {
+              P+=figure.GetPerimetr();
+            }
+             return  P;
+        }
+
+        public override string ToString()
+        {
+            return $" Count figures: {this.Count()}p  All area: {GetArea()}cm2 ,All Perimetr {GetPerimetr()}cm \n";
+        }
+
+
+    }
+
+
 
     class Program
     {
@@ -235,12 +272,17 @@ namespace GeometricFigure
             List<IFigure> Figures=new List<IFigure> { new Triangle(10, 15, 20),//трикутник
                                                       new Square(5),//квадрат
                                                       new Rectangle(5, 12),//прямокутник
-                                                      new Rhomb(10, 5),//ромб
+                                                       new Rhomb(10, 5),//ромб
                                                       new Parallelogram(10, 5, 4),//паралелограм
                                                       new Trapeze(10, 5, 4),//трапеція
                                                       new Сircle(17),//круг
                                                       new Ellipse(10,7)};//еліпс
 
+
+             
+             IFigure CFigures = new  CompoundFigures(new IFigure[] {new Triangle(10, 15, 20),
+                                                new Square(5)});
+             IFigure BFigures = new  CompoundFigures(Figures);
 
             Console.WriteLine(" FIGURES:\n");
             foreach (var figure in Figures)
@@ -248,8 +290,11 @@ namespace GeometricFigure
                 Console.WriteLine(figure);
 
             }
-            
+              Console.WriteLine(CFigures); 
+              Console.WriteLine(BFigures);
+              Console.ReadLine();
 
+            
     
         }
     }

@@ -229,11 +229,11 @@ namespace GeometricFigure
     class CompoundFigures:List<IFigure>,IFigure
     {
 
-         public CompoundFigures(IEnumerable<IFigure> collection):base(collection)
-            {            
-            }
+        public CompoundFigures(IEnumerable<IFigure> collection) : base(collection) => Console.WriteLine($"Capacity: {this.Capacity}");
 
-         public double GetArea()
+        
+
+        public double GetArea()
         {
             double Sum=0;
              foreach (var figure in this)

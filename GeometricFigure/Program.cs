@@ -10,9 +10,10 @@ namespace GeometricFigure
     {
         double GetPerimetr();
         double GetArea();
-        string ToString();
+     
     }
 
+    
     class Triangle: IFigure     
     {
         private double a, b, c;
@@ -226,12 +227,17 @@ namespace GeometricFigure
         }
     }
 
-    class CompoundFigures:List<IFigure>,IFigure
+    class CompoundFigures:List<IFigure>,IFigure 
     {
 
         public CompoundFigures(IEnumerable<IFigure> collection) : base(collection) => Console.WriteLine($"Capacity: {this.Capacity}");
 
-        
+        public CompoundFigures() => Console.WriteLine($"Capacity: {this.Capacity}");
+
+        public new void Add(IFigure figure)
+        {
+            this.Add(figure);
+        }
 
         public double GetArea()
         {
@@ -269,20 +275,30 @@ namespace GeometricFigure
         static void Main(string[] args)
         {
 
-            List<IFigure> Figures=new List<IFigure> { new Triangle(10, 15, 20),//трикутник
-                                                      new Square(5),//квадрат
-                                                      new Rectangle(5, 12),//прямокутник
-                                                       new Rhomb(10, 5),//ромб
-                                                      new Parallelogram(10, 5, 4),//паралелограм
-                                                      new Trapeze(10, 5, 4),//трапеція
-                                                      new Сircle(17),//круг
-                                                      new Ellipse(10,7)};//еліпс
+            List<IFigure> Figures=new List<IFigure> { new Triangle(10, 15, 20),    //трикутник
+                                                      new Square(5),               //квадрат
+                                                      new Rectangle(5, 12),        //прямокутник
+                                                      new Rhomb(10, 5),            //ромб
+                                                      new Parallelogram(10, 5, 4), //паралелограм
+                                                      new Trapeze(10, 5, 4),       //трапеція
+                                                      new Сircle(17),              //круг
+                                                      new Ellipse(10,7)};          //еліпс
 
 
              
              IFigure CFigures = new  CompoundFigures(new IFigure[] {new Triangle(10, 15, 20),
                                                 new Square(5)});
              IFigure BFigures = new  CompoundFigures(Figures);
+             IFigure GFigures = new CompoundFigures();
+            ((List<IFigure>)GFigures).Add(new Triangle(10, 15, 20));
+            
+          
+            foreach (var figure in ((List<IFigure>)GFigures))
+            {
+                Console.WriteLine(figure);
+
+            }
+
 
             Console.WriteLine(" FIGURES:\n");
             foreach (var figure in Figures)

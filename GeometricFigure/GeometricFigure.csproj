@@ -42,8 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompoundFigures.cs" />
+    <Compile Include="Ellipse.cs" />
+    <Compile Include="IFigure.cs" />
+    <Compile Include="Parallelogram.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rectangle.cs" />
+    <Compile Include="Rhomb.cs" />
+    <Compile Include="Square.cs" />
+    <Compile Include="Trapeze.cs" />
+    <Compile Include="Triangle.cs" />
+    <Compile Include="Сircle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

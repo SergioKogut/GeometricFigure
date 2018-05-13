@@ -243,6 +243,7 @@ namespace GeometricFigure
 
 
             Console.WriteLine(" FIGURES:\n");
+
             foreach (var figure in Figures)
             {
                 Console.WriteLine(figure);
